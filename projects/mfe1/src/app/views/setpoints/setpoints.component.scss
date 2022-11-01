@@ -1,0 +1,204 @@
+p {
+  margin-bottom: 0vw !important;
+}
+.bordered {
+  border: 1px solid #fff;
+}
+
+.box {
+  padding: 1.875vw;
+  border-radius: 0.3125vw;
+}
+hr {
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+.card-header {
+  border-bottom: none !important;
+}
+.card-header h5 {
+  font-size: 18px;
+}
+.plr-half {
+  padding-left: 7px;
+  padding-right: 7px;
+}
+.pr0 {
+  padding-right: 0px !important;
+}
+.p15 {
+  padding: 15px;
+}
+.w-100 {
+  width: 100%;
+}
+.mtb3vw {
+  margin-top: 3vw;
+  margin-bottom: 3vw;
+}
+.mtb1vw {
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+}
+.border-left {
+  border-left: 1px solid #efefef;
+}
+.table {
+  min-height: 400px;
+}
+input[type="radio"] {
+  padding-top: 5px;
+}
+.bold {
+  font-weight: bold;
+}
+.card-body {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-bottom: 0.5rem;
+}
+.pl15 {
+  padding-left: 15px;
+}
+.plr0 {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+.card {
+  border: none !important;
+  border-radius: 0px !important;
+}
+select.form-control {
+  // width: auto;
+}
+select.pfsign {
+  width: 100%;
+}
+.container-row {
+  width: 100% !important;
+  overflow-x: hidden;
+}
+.mr15 {
+  margin-right: 35px;
+}
+.form-group-labels {
+  font-size: 16px;
+}
+.small-text {
+  font-size: 12px;
+  padding-right: 5px;
+}
+.custom-btn {
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+  margin-bottom: 10px;
+}
+.caldate {
+  font-size: 10px;
+}
+// .btn {
+//   font-size: 12px;
+// }
+.form-group {
+  margin-bottom: 5px !important;
+}
+.scada-title {
+  font-size: 16px;
+  font-weight: 500;
+  padding-bottom: 1vw;
+  padding-top: 1vw;
+}
+.dateStamp {
+  font-size: 10px;
+  font-weight: bold;
+  padding-bottom: 1vw;
+}
+.filters {
+  color: #e53e3e;
+  font-size: 16px;
+}
+.pl3 {
+  padding-left: 3px;
+}
+.filters-list {
+  color: #536c79;
+  font-size: 16px;
+}
+.pl-10 {
+  padding-left: 2vw;
+}
+.scada-status-section {
+}
+.bleft {
+  border-left: 1px solid #efefef;
+}
+.pr5 {
+  padding-right: 5px !important;
+}
+input,
+select {
+  font-size: 15px;
+}
+.ag-header-cell-label,
+.ag-row,
+.ag-theme-balham,
+.ag-theme-balham:focus,
+.ag-theme-balham:after,
+.ag-theme-balham:before {
+  // font-size: 16px !important;
+}
+input {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  text-align: center;
+}
+.pl0 {
+  padding-left: 0px !important;
+}
+// input::-webkit-outer-spin-button,
+// input::-webkit-inner-spin-button {
+//   -webkit-appearance: none;
+//   margin: 0;
+// }
+
+/* Firefox */
+// input[type=number] {
+//   -moz-appearance: number-input;
+// }
+
+input[type="number"] {
+  &,
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    appearance: none;
+
+    &:hover,
+    &:focus {
+      -moz-appearance: number-input;
+    }
+  }
+}
+
+.buttonCss{
+ float: right;
+ margin-top: 25px;
+ margin-bottom: 10px;
+}
+
+/* .largeWidth {
+ float: right;
+  margin-bottom: 30px;
+} */
+
+
+.smallWidth {
+ margin-top: 40px;
+}

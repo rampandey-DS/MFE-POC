@@ -1,0 +1,39 @@
+<ngx-spinner bdColor="rgba(0,0,0,0.6)" size="medium" color="#217fb1" type="square-jelly-box" [fullScreen]="true"><p style="color: white" > {{spinnerText}} </p></ngx-spinner>
+<div class="container-fluid">
+    <div class="row m-0" style="height: 100vh">
+      <div class="m-auto row" style="background-color: white; border-radius: 12px; box-shadow: 12px 12px 12px 12px #a0a0a0;">
+        <div class="logo logo-image m-2">
+          <h4 class="bold">Power Plant Controller</h4>
+        </div>
+        <div class="m-2 row login-form-model" style="width:340px; height:340px;">
+          <div class="logo2 logo-image col-12"></div>
+          <div class="my-auto col-12">
+            <div class="col-sm-12 plr0 text-right">
+              <img src="./assets/images/ntpc.png" height="50" class="" alt="">
+            </div>
+            <div class="col-12 text-center">
+              <h5 class="mb-3 text-dark">LOGIN</h5>
+            </div>
+            <div class="col-12">
+              <form #loginForm="ngForm" class="text-dark">
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input type="text" id="username" name="username" class="form-control form-control-sm" [(ngModel)]="credentials.username" required>
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" id="password" name="password" class="form-control form-control-sm" (keypress)="isLogin($event)" [(ngModel)]="credentials.password" required>
+                </div>
+              </form>
+            </div>
+            <div class="col-12 text-center">
+              <button class="btn btn-sm btn-primary mb-3" [disabled]="loginForm.invalid" (click)="login()"><fa-icon class="mr-1" [icon]="icons.signIn"></fa-icon>Login</button>
+            </div>
+            <div class="col-12 text-center">
+              <a href="#" class="base-color-dark">Forgot Password ?</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

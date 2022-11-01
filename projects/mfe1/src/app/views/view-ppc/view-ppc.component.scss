@@ -1,0 +1,39 @@
+.mtt {
+  cursor: pointer;
+}
+
+.text-black {
+  color: black !important;
+}
+
+.card {
+  border: 1px solid rgba(0, 0, 0, .125) !important;
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+  background-color: #f2f3f4;
+}
+
+.inputWidth {
+  width: 175px;
+  ;
+}
+
+.background {
+  background-color: aliceblue;
+}
+
+::ng-deep bs-datepicker-container,
+bs-daterangepicker-container {
+  display    : block;
+  position   : absolute;
+  top        : 0px;
+  left       : 0px;
+ transform  : translate3d(611px, 240px, 0px);
+}
+
+
+// .bootstrap-datetimepicker-widget {
+//   display: block; position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(611px, 240px, 0px);
+//   }

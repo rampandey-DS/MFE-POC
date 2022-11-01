@@ -1,0 +1,130 @@
+<ngx-spinner bdColor="rgba(0,0,0,0.6)" size="medium" color="#217fb1" type="square-jelly-box" [fullScreen]="true">
+  <p style="color: white">{{ spinnerText }}</p>
+</ngx-spinner>
+<div class="container-fluid px-1">
+  <div class="row mx-0">
+    <div class="col-sm-12 col-xs-12 col-lg-12 col-md-12 px-1 mt-4">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0 ml-auto">PPC Log Viewer</h5>
+        </div>
+        <div class="card">
+          <strong style="color: #536c79" class="ml-3" translate>
+            Select Log Parameters</strong>
+          <div class="col-md-12 background">
+            <div class="col-md-10 m-auto">
+              <div class="row">
+                <div class="col-md-3 py-3">
+                  <div class="row">
+                    <div class="cpl-md-2 cpl-sm-12">
+                      <div class="custom-control">
+                        <input type="radio" name="bus" class="cursor-pointer" id="customSwitches1"
+                          (click)="radioButtonClick($event, 'ModBus')" [checked]="modBus" />
+                        <label class="ml-2 text-black" for="customSwitches1">Modbus Log</label>
+                      </div>
+                    </div>
+                    <div class="cpl-md-2 cpl-sm-12">
+                      <div class="custom-control">
+                        <input type="radio" name="bus" class="cursor-pointer" id="customSwitches"
+                          (click)="radioButtonClick($event, 'PPCBus')" [checked]="ppcBus" />
+                        <label class="ml-2 text-black" for="customSwitches">PPC Output Log</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2 py-3">
+                  <div class="form-inline mb-2">
+                    <label for="modbus" class="text-black">Log Level</label>
+                    <select class="ml-2 form-control form-control-sm" (change)="selectLogLevel($event)"
+                      [(ngModel)]="selectedLogLevel">
+                      <option value="All" selected>All</option>
+                      <option value="INFO">INFO</option>
+                      <option value="DEBUG">DEBUG</option>
+                      <option value="ERROR">ERROR</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <form #runImmediateForm="ngForm">
+                    <div class="row">
+                      <div class="col-md-6 py-3">
+                        <div class="form-inline mb-2">
+                          <label for="Form" class="enddt text-black mr-2" translate>Show logs from<span
+                              class="text-danger">*</span></label>
+                          <input type="text" name="startdate" placeholder="MM/DD/YYYY hh:mm:ss"  class="form-control form-control-sm caldate mr-2 inputWidth" id="startdate"  [(ngModel)]="setStartDate" 
+                          [owlDateTime]="dp1" [max]="max" [owlDateTimeTrigger]="dp1" required />
+                          <span [owlDateTimeTrigger]="dp1"><i class="fa fa-calendar cursor-pointer"></i></span>
+                        <owl-date-time [hour12Timer]="true" #dp1></owl-date-time>
+                        </div>
+                      </div>
+                      <div class="col-md-6 py-3">
+                        <div class="form-inline mb-2">
+                          <label for="to" class="enddt text-black mr-2" translate >Show logs to<span
+                              class="text-danger">*</span></label>
+                          <input type="text" name="enddate" placeholder="MM/DD/YYYY hh:mm:ss" class="form-control form-control-sm caldate mr-2 inputWidth" id="enddate"  [(ngModel)]="setEndDate" 
+                          [owlDateTime]="dp2" [max]="max" [owlDateTimeTrigger]="dp2" required />
+                          <span [owlDateTimeTrigger]="dp2"><i class="fa fa-calendar cursor-pointer"></i></span>
+                        <owl-date-time [hour12Timer]="true" #dp2></owl-date-time>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="col-md-1 mt-3">
+                  <button type="button" class="btn btn-primary" [disabled]="runImmediateForm.invalid"
+                    (click)="viewPPC()">
+                    View
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body p-0">
+          <div class="row justify-content-between mx-0">
+            <div class="ml-3 m-2" style="padding-top: 2px">
+              <strong style="font-size: 16px; letter-spacing: 1px; color: #e53e3e" translate>Filters:
+              </strong>
+              <strong style="color: #536c79" *ngIf="ppcTableFilter == null || ppcTableFilter.length == 0" translate>
+                No Filter Selected</strong>
+              <span class="filter-tabs" *ngFor="let filter of ppcTableFilter">
+                {{ filter }}
+                <a (click)="clearFilterLogTable(filter)" class="cursor-pointer">&times;</a>
+              </span>
+            </div>
+            <div class="d-flex justify-content-end mt-2 mr-4" style="flex-wrap: wrap" *ngIf="ppcLogsData.length != 0">
+              <i class="fa fa-download fa-lg mt-2 cursor-pointer" title="Download CSV" style="color: black !important"
+                (click)="exportTOExcel()" aria-hidden="true"></i>
+            </div>
+          </div>
+          <ag-grid-angular id="ppcTable" name="ppcTable" #ppcTable
+            style="width: 100%; height: calc(100vh - 315px); min-height: 170px" class="ag-theme-balham mt-2"
+            (gridReady)="sizeToFitUserTable()" [rowData]="ppcLogsData" [columnDefs]="columnDefs"
+            (filterChanged)="filterModifiedLogTable()" (sortChanged)="checkSorting()" (cellContextMenu)="cellRightClick($event)"
+            [gridOptions]="gridOptionsUserTable">
+          </ag-grid-angular>
+          <context-menu #basicMenu>
+            <ng-template contextMenuItem (execute)="openMessageModal()"><i class="fa fa-eye mr-1" aria-hidden="true"></i>Display log message</ng-template>
+          </context-menu>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div bsModal #logMessageModal="bs-modal" [config]="{backdrop: 'static'}" class="modal fade" tabindex="-1" role="dialog"
+  aria-labelledby="dialog-sizes-name2">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-purple  pt-1 pb-1">
+        <h5 id="dialog-sizes-name2" class="modal-title pull-left">Log Message</h5>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="logMessageModal.hide()">
+          <span aria-hidden="true" class="">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{{logMessage}}</p>
+      </div>
+    </div>
+  </div>
+</div>

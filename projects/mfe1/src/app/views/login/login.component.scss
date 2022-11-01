@@ -1,0 +1,38 @@
+.logo {
+    width:340px;
+    background-size: contain;
+}
+
+.logo2 {
+    display: none;
+}
+
+.login-form-model {
+    border-left: 4px solid #e8e8e8;
+}
+
+input {
+    background: white;
+    color: black;
+}
+
+input:focus {
+    background-color: white;
+    color: black;
+}
+
+@media(max-width: 742px) {
+    .logo {
+        display: none;
+    }
+
+    .logo2 {
+        background-size: contain;
+        display: block;
+        height: 72px;
+    }
+
+    .login-form-model {
+        border-left: 0px;
+    }
+}
